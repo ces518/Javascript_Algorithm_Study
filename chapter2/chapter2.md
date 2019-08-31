@@ -132,14 +132,69 @@ for (var i = 0; i < length; i++) {
 ```
 
   
+##### 2.2.4 배열 전체에 적용되는 기능
+- 배열을 다른 배열로 할당하기
+    - 대입연산자 (=) 를 사용하여 기존 배열을 다른 변수에 할당할 수 있다.
+        - 기존 배열의 주소(레퍼런스)를 할당하는것이다.
+        - 원본 배열을 변경하면 할당된 배열도 변경된다.
+```javascript
+var numbers = [];
+for (var i = 0; i < 10; i++) {
+    numbers[i] = i + 1;
+}
+var sameNumbers = numbers; // sameNumbers에 numbers 배열을 할당
+```
 
 
+- 얕은복사 (Shallow Copy)
+    - 대입연산자를 사용하여 배열을 할당할 경우 주소를 할당하는 것이다.
+    - 할당된 배열은 원본 배열을 가리키고 있을 뿐이다.
+    - 원본 배열을 변경하면 할당된 배열도 변경되는데 이를 얕은복사 (Shallow Copy) 라고 한다.
+```javascript
+var numbers = [];
+for (var i = 0; i < 10; i++) {
+    numbers[i] = i + 1;
+}
+var sameNumbers = numbers; // sameNumbers에 numbers 배열을 할당
+numbers[0] = 400; // 원본 배열인 numbers의 값을 변경
+print(sameNumbers[0]); // 400 출력
+```
 
+`얕은 복사 보다 깊은 복사 (Deep Copy) , 원래 배열 요소를 새로운 배열 요소로 복사하는 기능이 필요할 때가 있다.`
 
+- arr1 배열의 요소를 arr2로 깊은복사 (Deep Copy) 하는 함수
+```javascript
+function copy (arr1, arr2) {
+    var length = arr1.length;
+    for (var i = 0; i < length; i++) {
+        arr2[i] = arr[1];
+    }  
+}
+```
 
+- 깊은 복사(Deep Copy)
+    - 원본 배열을 가리키는 것이 아닌 원본 배열의 요소의 값을 새로운 배열 요소의 값으로 복사한다.
+    - 원본 배열이 수정되어도 복사된 배열에 영향을 미치지 않는다.
+```javascript
+var numbers = [];
+for (var i = 0; i < 100; i++) {
+    numbers[i] = i + 1;
+}
+// numbers [0, 1, 2, 3 ... 100]
+var sameNumbers = [];
+copy(numbers, sameNumbers);
+// copy 이후 
+// numbers [0, 1, 2, 3 ... 100] / sameNumbers [0, 1, 2, 3 ... 100]
+numbers[0] = 400; // numbers [400, 1, 2, 3 ... 100] / sameNumbers [0, 1, 2, 3 ... 100]
+print(sameNumbers[0]); // 원본 배열이 400 으로 수정되었으나 Deep Copy 되었기 때문에 1 출력
+```
 
-
-
+- print() 함수
+    - 배열의 내용을 출력 한다.
+```javascript
+var numbers = [1, 2, 3, 4, 5];
+print(numbers); // 1,2,3,4,5
+```
 
 
 
