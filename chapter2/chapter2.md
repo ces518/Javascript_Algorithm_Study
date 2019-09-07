@@ -202,5 +202,42 @@ print(numbers); // 1,2,3,4,5
 - 이를 접근자 함수 (Access Function) 이라 부르며 특정값을 포함하는 결과 배열을 반환한다.
 
 
+##### 2.3.1. 검색
+- IndexOf()
+    - 인자로 제공된 값이 배열에 존재하는지 여부를 알려준다.
+        - 존재한다면 양수
+        - 값이 없다면 -1을 반환한다.
+    - 찾고자 하는 값이 배열에 여러개 존재한다면 첫 번째로 발견한 인덱스를 반환한다.
+    
+```javascript
+var names = ['정곰', '혜지몽', '흑곰'];
+printstr('찾고 싶은 이름을 입력히세요');
+var name = readLine();
+var position = names.indexOf(name);
+if (position > 0) {
+    print(`${name} 을 찾았습니다. 위치는 ${position} 입니다.`);
+} else {
+    print(`${name} 은 배열에 존재하지 않습니다.`);
+}
+```
+
+- lastIndexOf()
+    - indexOf() 함수와 비슷한 함수
+    - 배열에서 일치하는 값중 마지막 인자의 위치를 반환한다.
+        - 존재한다면 양수
+        - 값이 없다면 -1을 반환한다.
+
+```javascript
+var names = ['정곰', '혜지몽', '흑곰'];
+printstr('찾고 싶은 이름을 입력히세요');
+var name = readLine();
+var position = names.lastIndexOf(name);
+if (position > 0) {
+    print(`${name} 을 찾았습니다. 위치는 ${position} 입니다.`);
+} else {
+    print(`${name} 은 배열에 존재하지 않습니다.`);
+}
+```
+
 
 
