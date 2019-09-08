@@ -479,6 +479,43 @@ var sentence = words.reduceRight(concat);
 print(sentence); // fox brown quick the
 ```
     
+##### 2.5.2 새 배열을 반환하는 반복자 함수
+- map()
+    - forEach() 처럼 배열의 각 요소에 함수를 적용하는 함수이다.
+    - 배열의 요소에 적용한 결과를 포함하는 새 배열을 반환한다.
+```javascript
+function curve (grade) {
+    return grade += 5;
+}
+
+var grades = [10, 15, 20, 25, 30];
+var newGrades = grades.map(curve);
+print(newGrades); // 15, 20, 25, 30, 35
+```
+
+- filter()
+    - every() 함수와 비슷하다.
+    - 불린 함수를 만족하는 요소를 포함하는 새로운 배열을 반환한다.
+```javascript
+function isEven (num) {
+    return num % 2 === 0;
+}
+
+function isOdd (num) {
+    return num % 2 !== 0;
+}
+
+var nums = [];
+for (var i = 0; i < 10; i++) {
+    nums.push(i + 1);
+}
+
+var evens = nums.filter(isEven);
+print(evens); // 2, 4 ,6 ,8
+
+var odds = nums.filter(isOdd);
+print(odds); // 1, 3, 5, 7, 9 
+```
     
     
     
