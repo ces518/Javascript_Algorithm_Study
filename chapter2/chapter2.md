@@ -390,3 +390,102 @@ print(nums); // 1, 3, 5, 8, 200, 400
 
 #### 2.5 반복자 함수
 - 반복자 함수는 배열의 각 요소에 함수를 적용한 뒤 그 결과 값 또는 값의 집합 또는 새로운 배열을 반환한다.
+
+
+##### 2.5.1 배열을 만들지 않는 반복자 함수
+- 배열을 만들지 않고 각 요소에 어떤 작업을 수행하거나 배열에 어떤 작업을 수행한 다음 한 개의 값을 생성하는 함수이다.
+
+- forEach()
+    - 배열을 만들지 않는 반복자 함수
+    - 배열의 모든 요소에 인자로 받은 함수를 호출한다.
+```javascript
+function square (num) {
+    print(num, num * num);
+}
+
+var nums = [1, 2, 3, 4, 5];
+nums.forEach(square);
+/*
+출력 결과
+1 1
+2 4
+3 9
+4 16
+5 25
+*/
+```
+
+- every()
+    - 배열을 만들지 않는 반복자 함수
+    - boolean 함수를 배열에 적용해 배열의 모든 요소가 참이라면 true를 반환한다.
+```javascript
+function isEven (num) {
+    return num % 2 === 0;
+}
+
+var nums = [2, 4, 6, 8, 10];
+var even = nums.every(isEven);
+if (even) {
+    print('모든 수가 짝수 입니다.');
+} else {
+    print('모든 수가 홀수 입니다.');
+}
+// 출력결과
+// 모든 수가 짝수 입니다.
+```
+
+- some()
+    - 배열을 만들지 않는 반복자 함수
+    - 배열 요소 중 한 요소라도 기준을 만족한다면 true를 반환한다.
+```javascript
+function isEven (num) {
+    return num % 2 === 0;
+}
+
+var nums = [1, 2, 5, 7, 8, 13];
+var even = nums.some(isEven);
+if (even) {
+    print('짝수인 수가 존재합니다.');
+} else {
+    print('짝수인 수가 존재하지 않습니다.');
+}
+// 출력 결과
+// 짝수인 수가 존재합니다.
+```
+
+- reduce()
+    - 배열을 만들지 않는 반복자 함수
+    - 누적자 함수를 인자로 받은 뒤 배열의 모든 요소를 누적자 함수에 적용한다.
+```javascript
+function add (total, currentValue) {
+    return total + currentValue;
+}
+var nums = [1, 2, 3, 4, 5];
+var sum = nums.reduce(add);
+print(sum); // 15
+```
+    
+- reduceRight()
+    - reduce() 함수와 같은 동작을 수행한다.
+    - 배열의 오른쪽 요소에서 왼쪽요소로 처리방향만 다르다.
+```javascript
+// reduceRight() 를 활용하여 배열 요소의 순서를 뒤집기
+function concat (accmulatedString, item) {
+    return accmulatedString + item;
+}
+
+var words = ['the', 'quick', 'brown', 'fox '];
+var sentence = words.reduceRight(concat);
+print(sentence); // fox brown quick the
+```
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
