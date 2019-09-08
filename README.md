@@ -26,3 +26,13 @@
             - 배열 중간에 요소를 추가하거나 삭제하기
                 - splice(3, 0, newNums); 를 하지않는 이유 ?
             - 배열 요소 정렬하기
+        - 반복자 함수
+            - 배열을 만들지 않는 반복자 함수
+                - forEach()
+                - every()
+                - some()
+                - reduce()
+                - reduceRight()
+            - 새 배열을 반환하는 반복자 함수
+                - map()
+                - filter()
