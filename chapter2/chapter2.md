@@ -698,7 +698,46 @@ After Shift
 12,-3
 */
 ```
-    
+
+#### 2.8 객체에 포함된 배열
+- 객체에 복잡한 데이터를 저장할때 배열을 활용할 수 있다.
+- 많은 자료구조들은 클래스로 구현 되었으며 클래스에 데이터를 저장할때 내부적으로 배열을 사용한다.
+
+한 주 동안 관찰된 가장 높은 온도를 저장하는 객체
+- 객체의 기능
+    - 새 온도를 추가
+    - 객체에 저장된 온도의 평균을 계산하는 기능
+```javascript
+function weekTemps () {
+    this.dataStore = [];
+    this.add = add;
+    this.average = average;
+}
+
+function add (temp) {
+    this.dataStore.push(temp);
+}
+
+function average () {
+    var total = 0;
+    for (var i = 0; i < this.dataStore.length; i++) {
+        total += this.dataStore[i];
+    }
+    return total / this.dataStore.length;
+}
+
+
+var thisWeek = new weekTemps();
+thisWeek.add(52);
+thisWeek.add(55);
+thisWeek.add(61);
+thisWeek.add(65);
+thisWeek.add(55);
+thisWeek.add(50);
+thisWeek.add(52);
+thisWeek.add(49);
+print(thisWeek.average()); // 54.875 출력
+```
 
     
     
