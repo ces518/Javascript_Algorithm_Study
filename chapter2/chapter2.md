@@ -565,6 +565,58 @@ var grades = [[89, 77, 55], [11, 22, 45], [11, 33, 48]];
 print(grades[0][1]); // 77 출력
 ```
 
+##### 2.6.2 이차원 배열 요소 처리하기
+- 이차원 배열의 요소는 두가지 주요 패턴으로 처리한다.
+- 1. 배열의 열을 기준으로 처리하는 방법
+- 2. 배열의 행을 기준으로 처리하는 방법
+
+
+배열의 열을 기준으로 처리하는 방법
+- 중첩 for문을 사용한다.
+- 외부 루프가 행을 처리하고 안쪽 루프가 열을 처리한다.
+
+중첩 for문을 활용하여 평균을 구하는 예제이다.
+```javascript
+var grades = [[89, 77, 78], [76, 82, 11], [91, 55, 86]];
+var total = 0;
+var average = 0.0;
+
+for (var row = 0; row < grades.length; row++) {
+    for (var col = 0; col < grades[row].length; col++) {
+        total += grades[row][col];
+    }
+    average = total / grades[row].length;
+    print(`total = ${total}, average = ${average}`);
+    total = 0;
+    average = 0.0;   
+}
+
+// 출력 결과
+// 81.33333..., 56.333333..., 77.333333...
+```
+
+
+배열의 행을 기준으로 처리하는 방법
+- 중첩 for문을 사용한다.
+- 외부 루프가 열을 처리하고 안쪽 루프가 행을 처리한다.
+
+앞선 예제를 외부 루프가 열을 처리하고 내부 루프가 행을 처리하도록 변경한 예제이다.
+```javascript
+var grades = [[89, 77, 78], [76, 82, 11], [91, 55, 86]];
+var total = 0;
+var average = 0.0;
+
+for (var col = 0; col < grades.length; col++) {
+    for (var row = 0; row < grades[col].length; row++) {
+        total += grades[col][row];
+    }
+    average = total / grades[col].length;
+    print(`total = ${total}, average = ${average}`);
+    total = 0;
+    average = 0.0;
+}
+```
+
     
 
     
