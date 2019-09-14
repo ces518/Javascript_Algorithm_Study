@@ -521,6 +521,50 @@ print(odds); // 1, 3, 5, 7, 9
 #### 2.6 이차원 배열과 다차원 배열
 - 자바스크립트는 기본적으로 일차원 배열만 지원하지만 배열의 배열을 이용해 다차원 배열을 만들 수 있다.
 
+
+##### 2.6.1 이차원 배열 생성
+- 이차원 배열은 행과 열을 가진 스프레드시트 같은 구조이다.
+- 자바스크립트에서 이차원 배열을 만드려면 배열을 만든 뒤 각 요소를 배열로 만들어야 한다.
+
+가장 간단한 이차원 배열을 생성하는 방법
+- 배열의 모든 요소가 undefined로 설정 된다.
+```javascript
+var twod = [];
+var rows = 5;
+for (var i = 0; i < rows; i++) {
+    twod[i] = [];
+}
+```
+
+"더글라스 크락포드의 자바스크립트 핵심 가이드" 에서 제공하는 실용적인 이차원 배열 생성 방법
+- 자바스크립트 배열 객체를 함수로 확장한다.
+- 배열의 행과 열의 개수를 설정하며 함수에 제공된 기본 값으로 모든 요소를 초기화 한다.
+```javascript
+// 2차원 배열을 생성하는 matrix 함수
+Array.matrix = function (numrows, numcols, initValue) {
+    var arr = [];
+    for (var i = 0; i < numrows; i++) {
+        var columns = [];
+        for (var j = 0; j < numcols; j++) {
+            columns[j] = initValue;
+        }
+        arr[i] = columns;       
+    }
+    return arr;
+}
+
+// matrix 함수를 활용한 생성 및 출력 예제
+var nums = Array.matrix(5, 5, 0);
+print(nums[1][1]); // 0 출력
+```
+
+선언과 동시에 이차원 배열을 정의하고 초기화하는 방법
+- 다음과 같이 한 줄의 코드로 이차원 배열을 정의하고 초기화할 수 있다.
+```javascript
+var grades = [[89, 77, 55], [11, 22, 45], [11, 33, 48]];
+print(grades[0][1]); // 77 출력
+```
+
     
 
     
