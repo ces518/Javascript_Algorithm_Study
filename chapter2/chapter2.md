@@ -617,6 +617,32 @@ for (var col = 0; col < grades.length; col++) {
 }
 ```
 
+##### 2.6.3 들쭉날쭉한 배열
+- 배열의 행이 포함하는 요소의 개수가 서로 다른 배열이다.
+- 다른 프로그래밍 언어는 들쭉날쭉한 배열을 처리하기 어렵다
+- 자바스크립트는 모든 행의 길이를 정확하게 알 수 있으므로 들쭉날쭉한 배열도 쉽게 처리가 가능하다.
+
+```javascript
+var grades = [[89, 77], [76, 82, 81], [91, 94, 89, 99]];
+var total = 0;
+var average = 0.0;
+
+for (var row = 0; row < grades.length; row++) {
+    for (var col = 0; col < grades[col].length; col++) {
+        total += grades[row][col];
+    }
+    average = total / grades[row].length;
+    print(`Student ${parseInt(row + 1)} average = ${average.toFixed(2)}`);
+    total = 0;
+    average = 0.0;
+}
+
+// 출력 결괴
+// Student 1 average = 83.00
+// Student 2 average = 79.67
+// Student 3 average = 93.25
+```
+
     
 
     
