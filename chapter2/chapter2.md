@@ -739,8 +739,55 @@ thisWeek.add(49);
 print(thisWeek.average()); // 54.875 출력
 ```
 
-    
-    
+#### 2.9 연습문제
+1. 객체에 학생들의 점수 집합을 저장하는 grades 객체 정의
+- 점수를 추가하는 함수와 학생의 평균 점수를 출력하는 기능 구현
+```javascript
+function grades() {
+    this.scores = [];
+    this.add = function (score) {
+        this.scores.push(score);
+    };
+    this.average = function () {
+        return this.scores.reduce((result, data) => result + data, 0) / this.scores.length;
+    };
+}
+```
+
+2. 배열의 단어 집합을 저장한 뒤 배열의 내용을 정방향 또는 역방향으로 출력하는 기능 구현
+```javascript
+var words = ['abcd', 'bcde', 'cde', 'def'];
+print(words); // 정방향
+print(words.reverse()); // 역방향
+```
+
+
+3. 이차원 배열을 이용해 월간 온도 자료를 저장하도록 weeklyTemps 객체를 수정
+- 월간 평균, 지정한 주의 평균, 모든주의 평균을 출력하는 기능 구현
+```javascript
+function WeeklyTemps () {
+    this.dataStore = [[], [], [], []]; // 4주를 기준
+    this.monthlyAverage = function () {
+        /*
+        var totalLength = 0;
+        var total = this.dataStore.reduce((resultData, dataStore) => {
+            totalLength += dataStore.length;
+            return resultData + dataStore.reduce((result, data) => result + data, 0);    
+        }, 0);
+        return total / totalLength;
+        */
+
+        var weeks = this.weeksAverage();
+        return weeks.reduce((result, data) => result + data, 0) / weeks.length;
+    };
+    this.targetWeekAverage = function (targetWeek) {
+        return this.dataStore[targetWeek].reduce((result, dataStore) => result + dataStore, 0) / this.dataStore[targetWeek].length;
+    };
+    this.weeksAverage = function () {
+        return this.dataStore.map((dataStore, index) => this.targetWeekAverage(index));
+    };
+}
+```
     
     
     
