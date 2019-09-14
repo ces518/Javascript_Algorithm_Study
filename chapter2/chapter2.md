@@ -642,7 +642,62 @@ for (var row = 0; row < grades.length; row++) {
 // Student 2 average = 79.67
 // Student 3 average = 93.25
 ```
+    
+    
+#### 2.7 객체를 요소로 포함하는 배열
+- 배열은 객체도 요소로 포함할 수 있다.
 
+
+Point 객체를 배열에 저장하고 이를 출력 하는 예제
+- push 함수와 shift 함수를 활용하여 좌표를 추가 및 제거
+```javascript
+function Point (x, y) {
+    this.x = x;
+    this.y = y;
+}
+
+function displayPts (arr) {
+    for (var i = 0; i < arr.length; i++) {
+        print(`${arr[i].x}, ${arr[i].y}`);
+    }
+}
+
+var p1 = new Point(1, 2);
+var p2 = new Point(3, 5);
+var p3 = new Point(2, 8);
+var p4 = new Point(4, 4);
+var points = [p1, p2, p3, p4];
+for (var i = 0; i < points.length; i++) {
+    print(`Point ${parseInt(i + 1)} : ${points[i].x}, ${points[i].y}`);
+}
+
+var p5 = new Point(12, -5);
+points.push(p5);
+print('After Push');
+displayPts(points);
+points.shift();
+print('After Shift');
+displayPts(points);
+
+// 출력 결과
+/*
+Point 1: 1,2
+Point 2: 3,5
+Point 3: 2,8
+Point 4: 4,4
+After Push
+1,2
+3,5
+2,8
+4,4
+12,-3
+After Shift
+3,5
+2,8
+4,4
+12,-3
+*/
+```
     
 
     
