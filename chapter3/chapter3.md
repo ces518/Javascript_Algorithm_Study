@@ -71,3 +71,27 @@ function List () {
     this.contains = contains;
 }
 ```
+
+##### 3.2.1 Append: 리스트에 요소 추가
+- append() 함수는 리스트의 다음 가용위치 (listSize 변수의 값) 에 새 요소를 추가하는 함수이다.
+- 요소를 추가한 뒤 listSize 를 1만큼 증가 시킨다.
+```javascript
+function append (element) {
+    this.dataStore[this.listSize++] = element;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
