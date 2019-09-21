@@ -103,7 +103,29 @@ function find (element) {
 }
 ```
 
-
+##### 3.2.3 Find: 리스트의 요소 검색
+- find() 
+    - 루프로 dataSource를 반복하며 원하는 요소를 검색한다.
+    - 요소를 발견하면 요소의 위치를 반환한다.
+    - 요소를 찾지 못할경우 -1을 반환한다.
+    
+- remove()
+    - find() 함수의 반환값으로 에러를 감지할수 있다.
+    - find() 함수의 반환값을 splice() 함수에 넘겨주어 원하는 요소를 삭제한뒤 dataSource 배열을 연결한다.
+    - remove() 함수는 해당 요소를 삭제했다면 true를 반환하고, 삭제하지 못했다면 false를 반환한다.
+    
+```javascript
+const NOT_FOUND = -1;
+function remove (element) {
+    var index = this.find(element);
+    if (index === NOT_FOUND) {
+        return false;
+    }
+    this.dataSource.splice(index, 1);
+    this.listSize--;
+    return true;
+}
+```
 
 
 
