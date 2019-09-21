@@ -50,4 +50,10 @@
 - 리스트
     - List ADT
     - List 클래스 구현
-        - Append 함수 구현
+        - Append: 리스트에 요소 추가
+        - Remove: 리스트의 요소 삭제
+        - Find: 리스트의 요소 검색
+        - Length: 리스트의 요소 개수
+        - toString: 리스트의 요소 확인
+            - 중간점검
+        - Insert: 리스트에 요소 삽입
