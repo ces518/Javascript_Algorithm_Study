@@ -170,6 +170,43 @@ print(names.toString());
 */
 ``` 
 
+##### 3.2.6 Insert: 리스트에 요소 삽입
+- insert()
+    - 리스트의 기존 요소 뒤에 새로운 요소를 삽입하게 한다.
+    - 헬퍼함수 find() 를 이용해 새 요소의 삽입 위치를 결정한다.
+    - splice() 함수를 이용해 새 요소를 리스트에 추가한다.
+    - listSize를 1만큼 증가 시키고 true를 반환한다.
+    - 만약 실패했다면 false를 반환한다.
+    
+```javascript
+function insert (element, after) {
+    var insertPos = this.find(after);
+    if (insertPos > -1) {
+        this.dataSource.splice(insertPos + 1, 0, element);
+        this.listSize++;
+        return true;
+    }
+    return false;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
