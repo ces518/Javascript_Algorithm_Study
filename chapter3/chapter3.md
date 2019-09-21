@@ -82,6 +82,26 @@ function append (element) {
 ```
 
 
+##### 3.2.2 Remove: 리스트의 요소 삭제
+- remove() 함수는 List 클래스의 함수중 가장 구현하기 어려운 함수이다.
+- 삭제 프로세스
+    - 우선 리스트에서 삭제하려는 요소를 찾는다.
+    - 요소를 삭제하고, 나머지 배열 요소를 왼쪽으로 이동시켜 요소가 삭제된 자리를 메워야 한다.
+    - splice() 함수를 이용하면 이 과정을 쉽게 해결할 수 있다.
+
+
+**삭제할 요소를 찾는 헬퍼함수 find()**
+```javascript
+function find (element) {
+    var length = this.dataSource.lengh;
+    for (var i = 0; i < length; i++) {
+        if (this.dataSource[i] === element) {
+            return i;
+        }
+    }
+    return -1;
+}
+```
 
 
 
