@@ -190,7 +190,18 @@ function insert (element, after) {
 }
 ```
 
-
+##### 3.2.7 리스트의 모든 요소 삭제
+- clear () 
+    - delete 명령어로 모든 dataSource 배열을 삭제한 다음 빈 배열을 다시 만든다.
+    - listSize와 pos를 0 으로 만든다.
+        - 새 리스트의 시작 위치로 초기화 한다.
+```javascript
+function clear () {
+    delete this.dataSource;
+    this.dataSource.length = 0;
+    this.listSize = this.pos = 0;
+}
+```
 
 
 
