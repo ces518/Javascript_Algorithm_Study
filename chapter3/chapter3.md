@@ -218,9 +218,75 @@ function contains (element) {
 }
 ```
 
+##### 3.2.9 리스트 탐색
+- 리스트 탐색과 관련된 함수들이다.
+- front()
+    - 현재 위치를 나타내는 pos 를 0 으로 초기화한다.
+- end()
+    - 현재 위치를 리스트의 가장 마지막 요소를 가리키도록 초기화한다.
+- prev()
+    - 현재 위치에서 이전 요소를 가리키도록 변경한다.
+- next()
+    - 현재 위치에서 다음 요소를 가리키도록 변경한다.
+- moveTo(position)
+    - position에 해당하는 위치로 가리키도록 변경한다. 
+- getElement()
+    - 현재 위치의 요소를 반환한다.
+```javascript
+function front () {
+    this.pos = 0;
+}
 
+function end () {
+    this.pos = this.listSize - 1;
+}
 
+function prev () {
+    if (this.pos > 0) {
+        this.pos--;
+    }
+}
 
+function next () {
+    if (this.pos < this.listSize - 1) {
+        this.pos++;
+    }
+}
+
+function currPos () {
+    return this.pos;
+}
+
+function moveTo (position) {
+    this.pos = position;
+}
+
+function getElement () {
+    return this.dataSource[this.pos];
+}
+```
+
+```javascript
+// given 
+// 리스트 데이터 초기화
+var names = new List();
+names.append('자바');
+names.append('스크립트');
+names.append('알고리즘');
+names.append('스터디');
+
+names.front(); // 리스트의 0번째 요소를 가리키도록 초기화
+print(names.getElement()); // 자바 출력
+
+names.next(); // 현재 위치에서 다음 요소를 가리키도록 변경
+print(names.getElement()); // 스크립트 출력
+
+names.prev(); // 현재 위치에서 이전 요소를 가리키도록 변경
+print(names.getElement()); // 자바 출력
+
+names.end(); // 리스트의 가장 마지막 요소를 가리키도록 초기화
+print(names.getElement()); // 스터디 출력
+```
 
 
 
