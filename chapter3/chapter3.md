@@ -191,7 +191,7 @@ function insert (element, after) {
 ```
 
 ##### 3.2.7 리스트의 모든 요소 삭제
-- clear () 
+- clear() 
     - delete 명령어로 모든 dataSource 배열을 삭제한 다음 빈 배열을 다시 만든다.
     - listSize와 pos를 0 으로 만든다.
         - 새 리스트의 시작 위치로 초기화 한다.
@@ -203,8 +203,20 @@ function clear () {
 }
 ```
 
-
-
+##### 3.2.8 Contains: 리스트에 특정값이 있는지 판단
+- contains()
+    - 어떤 값이 리스트에 포함되어 있는지 확인할때 사용하는 함수이다.
+```javascript
+function contains (element) {
+    var length = this.dataSource.length;
+    for (var i = 0; i < length; i++) {
+        if (this.dataSource[i] === element) {
+            return true;
+        }
+    }
+    return false;
+}
+```
 
 
 
