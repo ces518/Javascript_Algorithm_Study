@@ -309,7 +309,42 @@ for (names.front(); names.currPos() < names.length(); names.next()) {
 - Redbox와 같은 비디오 대여상점 운영 시스템에서 리스트 활용 예시 이다.
 
 
+##### 3.4.1 텍스트 파일 읽기
+- 상점에 존재하는 비디오 목록을 프로그램으로 읽어오려면 파일의 데이터를 읽어야한다.
+- 비디오 목록을 포함하는 텍스트 파일
+```text
+1. The Shawshank Redemption
+2. The Godfather
+3. The Godfather : Part 2
+4. Pulp Fiction
+5. The Good, the Bad and the Ugly
+6. 12 Angry Men
+7. Schindler's List
+8. The Dark Knight
+9. The Lord of the Rings : The Return of the King
+10. Fight Club
+11. Star Wats : Episode V - The Empire Strikes Back
+12. One Flew Over the Cuckook's Nest
+13. The Lord of the Rings : The Fellowship of the Ring
+14. Inception
+15. Goodfellas
+16. Star Wars
+17. Seven Samurai
+18. The Matrix
+19. Forrest Gump
+20. City of God 
+```
 
+파일의 내용을 프로그램으로 읽기
+- 텍스트 파일의 내용을 배열로 저장할때 개행 문자는 공백으로 치환된다.
+- 문자열 비교시 공백이 문제를 일으킬수 있기때문에 배열의 각 요소에서 앞뒤 공백을 제거해준다.
+```javascript
+var movies = createArr('films.txt');
+function createArr (file) {
+    var arr = read(file).split('\n');
+    return arr.map(movie => movie.trim());
+}
+```
 
 
 
