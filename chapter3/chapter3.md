@@ -346,6 +346,101 @@ function createArr (file) {
 }
 ```
 
+##### 3.4.2 리스트로 상점 관리하기
+- movies 배열을 리스트로 저장하기
+
+```javascript
+var movieList = new List();
+movies.forEach(movie => {
+    movieList.append(movie);
+});
+```
+
+- displayList(list)
+    - 상점에서 판매중인 영화 목록을 출력하는 함수이다.
+    - displayList() 함수는 다음 예제에서 나올 Customer 객체에서는 잘 동작하지 않는다.
+```javascript
+function displayList (list) {
+    for (list.front(); list.currPos() < list.length(); list.next()) {
+        print(list.getElement());
+    }   
+};
+```
+
+- 개선된 displayList(list)
+    - instanceof 연산자를 활용해 Customer 객체인지 확인한다.
+    - Customer 객체라면 두 프러퍼티를 인덱스로 활용해 고객명과, 고객이 빌린 영화 명을 출력한다.
+```javascript
+function displayList (list) {
+    for (list.front(); list.currPos() < list.length(); list.next()) {
+        if (list.getElement() instanceof Customer) {
+            print(`${list.getElement()['name']}, ${list.getElement()['movie']}`);
+        } else {
+            print(list.getElement());
+        }
+    }   
+};
+```
+
+- 고객명과 고객이 빌린 영화명을 포함하는 고객 리스트
+```javascript
+function Customer (name, movie) {
+    this.name = name;
+    this.movie = movie;
+};
+
+var customers = new List();
+```
+
+- checkOut()
+    - 고객이 영화를 대여하는 기능을 가진 함수
+    - 고객명, 빌리려는 영화명이 필요하다.
+    - 영화를 대여할수 있다면 영화목록에서 해당 영화를 삭제하고, 고객 리스트로 추가한다.
+```javascript
+function checkOut (name, movie, movieList, customerList) {
+    if (movieList.contains(movie)) {
+        var customer = new Customer();
+        customerList.add(customer);
+        movieList.remove(movie);
+    } else {
+        print(`movie 는 빌릴 수 없는 영화입니다.`);
+    }
+}
+```
+
+
+
+- 프로그램 실행 예제
+```javascript
+var movies = createArr('films.text');
+var movieList = new List();
+var customers = new List();
+
+movies.forEach(movie => {
+    movieList.append(movie);
+});
+
+print(`대여가능한 영화 목록 `);
+displayList(movieList);
+
+putstr(`고객명을 입력하세요: `);
+var name = readLine();
+
+putstr(`어떤 영화를 빌릴 껀가요`);
+var movie = readLine();
+
+checkOut(name, movie, movieList, customers);
+
+print(`현재 대여한 고객 목록 `);
+displayList(customers);
+
+print(`대여가능한 영화 목록`);
+displayList(movieList);
+```
+
+
+
+
 
 
 
