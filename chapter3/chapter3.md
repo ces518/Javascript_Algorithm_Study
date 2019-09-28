@@ -300,12 +300,13 @@ print(names.getElement()); // 스터디 출력
 - front() 함수를 활용해 현재 위치를 리스트의 가장 앞으로 초기화한다.
 - currPos() 함수가 리스트의 길이 보다 작을때 루프를 반복하고, 매 루프마다 next() 함수를 호출하여 현재 위치의값을 증가시킨다. 
 ```javascript
-for (names.front(); names.currPos(); names.length(); names.next()) {
+for (names.front(); names.currPos() < names.length(); names.next()) {
     print(names.getElement());
 }
 ```
 
-
+#### 3.4 리스트 기반 애플리케이션
+- Redbox와 같은 비디오 대여상점 운영 시스템에서 리스트 활용 예시 이다.
 
 
 
