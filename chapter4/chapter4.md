@@ -200,5 +200,50 @@ function factorial (n) {
 5라는 인자를 제공하면 120 이 반환된다.
 
 
+#### 4.4 연습문제
+
+- 1. 수식에 열고 닫는 괄호 쌍이 제대로 갇춰졌는지 확인할때도 스택을 이용할 수 있다.
+- 수식을 인자로 받아 수식에 열거나 닫는 괄호가 없을 때 그 위치를 반환하는 함수를 구현
+- ex 2.3 + 23 / 12 + (3.141589 * .24 에서는 닫는 괄호가 없음
+```javascript
+function hasBracket (expression) { // 2.3+23/12+(3.141589*.24 
+    var s = new Stack();
+    for (var i = 0; i < expression.length; i++) {
+        var temp = expression[i];
+        if (temp === "(") {
+            s.push(i);
+        } else if (temp === ")") {
+            s.pop();
+        }
+    }
+    if (s.length() > 0) {
+        return s.pop();
+    }
+    return -1;
+}
+```
+
+- 2. 다음과 같은 형식을 갖는 후위 연산 표기를 처리하는 후위 연산 평가자를 구현하시오.
+- 문제 이해 못함
+
+- 3. 우리 주변의 페즈 디스펜서는 스택과 같은 방식으로 동작한다.
+- 페즈 디스펜서에 빨강 노랑 흰색 사탕이 섞여있는데 노랑 사탕은 우리가 싫어하는 맛이다.
+- 스택 (1개이상의 스택 사용가능) 을 이용해 디스펜서의 다른 사탕 순서는 바꾸지 않고 노랑 사탕만 제거하는 프로그램을 완성하시오
+```javascript
+function solution (dispensor) { // ['빨강', '노랑', '흰색'] 형태로 들어온다고 가정 
+    var s = new Stack();
+    for (var i = 0; i < dispensor.length; i++) {
+        if (dispensor[i] !== '노랑') {
+            s.push(dispensor[i]);
+        }
+    }
+    var returnValue = [];
+    while (s.length() > 0) {
+        returnValue.push(s.pop());
+    }
+    return returnValue.reverse();
+}
+```
+
 
 
