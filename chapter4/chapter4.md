@@ -131,6 +131,40 @@ stack.clear();
 print(`저장된 요소의 수 = ${stack.length()}`);
 ```
 
+
 #### 4.3 Stack 클래스 이용하기
 - 스택을 이용해 다양한 문제를 해결할 수 있다.
 - 4.3 절에서는 스택으로 해결할 수 있는 여러 문제를 살펴본다.
+
+
+##### 4.3.1 진법 변환
+- 어떤 진법에서는 다른 진법으로 숫자를 변환할때 스택을 이용할 수 있다.
+
+- 2진수부터 9진수 사이에만 동작한다.
+    - 1. n의 가장 오른쪽 숫자는 n%b 이다. 이 값을 스택에 추가한다.
+    - 2. n을 n/b으로 치환한다.
+    - 3. n=0이 되고, 나머지가 없을때 까지 1번 2번 과정을 반복한다.
+    - 4. 스택에 저장된 숫자를 모두 꺼내 변환된 숫자 문자열을 만든다.
+
+
+`기수가 2~9사이인 수의 진법을 변환하는 함수`
+```javascript
+function mulBase (num, base) {
+    var s = new Stack();
+    do {
+        s.push(num % base);
+        num = Math.floor(num /= base);
+    } while (num > 0);
+    var converted = "";
+    while (s.length() > 0) {
+        converted += s.pop();
+    }
+    return converted;
+}
+```
+
+
+
+
+
+
