@@ -182,6 +182,22 @@ function isPalindrome (word) {
 };
 ```
 
+##### 4.3.3 재귀
+- 프로그래밍 언어를 사용할때도 stack을 종종 사용한다.
+- 재귀를 구현할때 스택을 사용한다.
+
+`팩토리얼 함수의 재귀 구현`
+```javascript
+function factorial (n) {
+    if (n === 0 ){
+        return 1;
+    }
+    return n * factorial(n-1);
+};
+```
+
+- 5! = 5 * 4 * 3 * 2 * 1
+5라는 인자를 제공하면 120 이 반환된다.
 
 
 
