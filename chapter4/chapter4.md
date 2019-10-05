@@ -163,6 +163,24 @@ function mulBase (num, base) {
 }
 ```
 
+##### 4.3.2 회문
+- 앞으로 읽으나 뒤로 읽으나 같은 단어, 구절, 숫자를 회문 palindrome 이라고 한다.
+- ex) dad, racecar
+
+- 스택을 이용하여 문자열이 회문인지 여부를 판단할 수 있다.
+```javascript
+function isPalindrome (word) {
+    var s = new Stack();
+    for (var i = 0; i < word.length; i++) {
+        s.push(word[i]);
+    };
+    var reverseWord = "";
+    while (s.length() > 0) {
+        reverseWord += s.pop();
+    }
+    return word === reverseWord;
+};
+```
 
 
 
