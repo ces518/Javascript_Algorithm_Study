@@ -101,3 +101,121 @@ function empty() {
     }
 }
 ```
+
+#### 5.3 Queue 클래스 사용하기: 스퀘어 댄스 파티에서 파트너 정하기
+- 생략
+
+#### 5.4 큐로 데이터 정렬하기
+- 데이터를 정렬할 때도 큐를 사용할 수 있다.
+- 여러 큐를 이용해 펀치 카드 정렬을 시뮬레이션 할수 있다.
+- 이런 정렬 기법을 기수 정렬 (Radix Sort) 라고 한다.
+- 기수 정렬이 가장 빠른 정렬 알고리즘은 아니지만 큐를 활용한 재미있는 방법을 보여준다.
+
+- 기수 정렬은 두번의 과정을 걸쳐 데이터를 정렬한다. 0~99 사이의 정수 데이터가 있다고 가정하자.
+```javascript
+91, 46, 85, 15, 92, 35, 31, 22
+```
+
+- 기수정렬의 첫번째 과정을 거치면 데이터가 다음처럼 정렬된다.
+    - 1의 자리수를 기점으로 정렬을 한다.
+```javascript
+0:
+1: 91, 31
+2: 92, 22
+3:
+4:
+5: 85, 15, 35
+6: 46
+7:
+8:
+9:
+```
+
+- 이번에는 두번째 과정을 거치면 데이터가 다음처럼 정렬 된다.
+    - 10의 자리수를 기점으로 정렬을 한다.
+```javascript
+0:
+1: 15
+2: 22
+3: 31, 35
+4: 46
+5:
+6:
+7:
+8: 85
+9: 91, 92
+``` 
+
+- 정렬된 숫자들의 결과는 다음과 같다.
+```javascript
+15, 22, 31 ,35, 46, 85, 91, 92
+```
+
+- 큐를 이용해 이 알고리즘을 구현할 수 있다.
+- 여기서 큐는 통의 역할을 하며 각 숫자당 한개 즉 9개의 큐가 필요하다.
+- 나머지와 나눗셈 연산을 활용해 1의 자리 숫자인지 10의자리 숫자인지 구분할 수 있다.
+
+- 다음은 1의 자리 숫자인지 10의 자리 숫자인지 구분해 큐에 숫자를 추가하는 함수이다.
+```javascript
+function distribute(nums, queues, n, digit) {
+   for (var i = 0; i < n; i++) {
+       if (digit == 1) {
+           queues[nums[i]%10].enqueue(nums[i]);
+       } else {
+           queues[Math.floor(nums[i] / 10)].enqueue(nums[i]);
+       }
+   } 
+}
+``` 
+
+- 다음은 큐에 저장된 숫자를 수집하는 함수이다.
+```javascript
+function collect(queues, nums) {
+    var i = 0;
+    for (var digit = 0; digit < 10; digit++) {
+        while (!queues[digit].empty()) {
+            nums[i++] = queues[digit].dequeue();
+        }
+    }
+}
+```
+
+`배열의 내용을 출력하는 함수를 포함한 기수 정렬을 수행하는 전체 프로그램`
+```javascript
+function distribute(nums, queues, n, digit) {
+   for (var i = 0; i < n; i++) {
+       if (digit == 1) {
+           queues[nums[i]%10].enqueue(nums[i]);
+       } else {
+           queues[Math.floor(nums[i] / 10)].enqueue(nums[i]);
+       }
+   } 
+}
+
+function collect(queues, nums) {
+    var i = 0;
+    for (var digit = 0; digit < 10; digit++) {
+        while (!queues[digit].empty()) {
+            nums[i++] = queues[digit].dequeue();
+        }
+    }
+}
+
+function dispArray(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        putstr(arr[i] + " ");
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
