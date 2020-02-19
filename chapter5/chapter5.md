@@ -208,6 +208,47 @@ function dispArray(arr) {
 }
 ```
 
+#### 5.5 우선순위 큐
+- 큐에서 요소를 삭제할 때에는 먼저 삽입한 요소 부터 삭제된다.
+- 하지만 선입 선출 방식이 아닌 우선순위와 같은다른 기준으로 요소를 삭제해야할 경우도 있다.
+- 이럴 때에는 우선순위 큐 (Priority Queue)라는 자료구조를 이용해야 한다.
+- 우선순위 큐는 요소의 우선순위를 기준으로 요소의 삭제 순서를 결정한다.
+- 병원 응급실과 같은 상황이다.
+- 병원 응급실의 대기실에는 예진 간호사가 환자를 검사한뒤 환자의 상태를 평가해 우선순위를 지정한다.
+- 우선순위가 높은 코드를 받은 환자는 우선순위가 낮은 환자보다 먼저 진료를 받고, 우선순위가 동일할 경우 선입 선출 규칙을 따른다.
+
+`환자 객체`
+```javascript
+function Patient (name, code) {
+    this.name = name;
+    this.code = code;
+}
+// code 는 환자의 우선순위를 나타내는 정수이다.
+```
+`dequeue 함수`
+- 환자의 우선순위에 따라 요소를 삭제하도록 수정한다.
+- 우선순위가 같을 경우 선입선출의 방식을 따른다.
+```javascript
+function dequeue () {
+    var entry = 0;
+    
+    for (var i = 0; i < this.dataStore.length; i++) {
+        if (this.dataStore[i].code < this.dataStore[entry].code) {
+            entry = i;
+        }
+    }
+    return this.dataStore[entry].splice(entry, 1);
+}
+```
+> dequeue() 함수는 순차검색방법으로 우선순위가 가장 높은 코드(숫자가낮을수록 우선순위가 높음)를 찾는다.
+- 큐에서 제거된 요소를 반환한다.
+
+
+
+
+
+
+
 
 
 
